@@ -1,0 +1,296 @@
+---
+layout: layout.njk
+---
+{% set navItems = [
+  { id: 'home', label: 'Home' },
+  { id: 'rsvp', label: 'RSVP', enabled: wedding.sections.rsvp.enabled },
+  { id: 'schedule', label: 'Schedule', enabled: wedding.sections.schedule.enabled },
+  { id: 'travel', label: 'Travel', enabled: wedding.sections.travel.enabled },
+  { id: 'lodging', label: 'Lodging', enabled: wedding.sections.lodging.enabled },
+  { id: 'activities', label: 'Activities', enabled: wedding.sections.activities.enabled },
+  { id: 'hikes', label: 'Hikes', enabled: wedding.sections.hikes.enabled },
+  { id: 'mtb', label: 'MTB', enabled: wedding.sections.mtb.enabled },
+  { id: 'faq', label: 'FAQ', enabled: wedding.sections.faq.enabled },
+  { id: 'registry', label: 'Registry', enabled: wedding.sections.registry.enabled }
+] %}
+{% set hasMapCoords = wedding.sections.lodging.has_coordinates %}
+<div class="page" data-theme="default">
+  <header class="site-header" data-scrollspy-top>
+    <nav class="primary-nav" aria-label="Primary">
+      <a class="logo" href="#home" data-konami-logo>
+        <svg class="inline-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <path d="M8 48l8-32 16 20 16-20 8 32" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span>Alex &amp; Lily</span>
+      </a>
+      <div class="nav-links" role="tablist">
+        {% for item in navItems if item.enabled or item.id == 'home' %}
+        <a href="#{{ item.id }}" data-nav-link>{{ item.label }}</a>
+        {% endfor %}
+      </div>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <h1 id="hero-title">
+          <span class="hero-names">
+            Alex
+            <span class="wiggle" aria-hidden="true">
+              <svg class="inline-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 50l12-36 10 18 8-12 10 30" fill="none" stroke="var(--accent2)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            Lily
+          </span>
+        </h1>
+        <p class="hero-tagline">{{ wedding.site.hero_tagline }}</p>
+        <p class="date-location">
+          {{ wedding.site.date_iso | friendlyDate(wedding.site.timezone) }} &middot;
+          {{ wedding.site.venue.name }} · {{ wedding.site.town }}, {{ wedding.site.state }}
+        </p>
+        {% if wedding.site.show_countdown %}
+        <div class="countdown" role="status" aria-live="polite" data-countdown data-date="{{ wedding.site.date_iso }}" data-timezone="{{ wedding.site.timezone }}">
+          Counting down…
+        </div>
+        {% endif %}
+        <div class="cta-row">
+          <a href="{{ wedding.site.rsvp_typeform_url }}" target="_blank" rel="noopener" class="primary" data-rsvp-link>
+            RSVP on Typeform
+          </a>
+          <a href="#schedule" class="secondary">See the schedule</a>
+        </div>
+        <div class="couple-bios" aria-label="Couple bios">
+          <article>
+            <h2 class="visually-hidden">Alex</h2>
+            <p>{{ wedding.site.couple.alex_blurb }}</p>
+          </article>
+          <article>
+            <h2 class="visually-hidden">Lily</h2>
+            <p>{{ wedding.site.couple.lily_blurb }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    {% if wedding.sections.rsvp.enabled %}
+    <section id="rsvp" aria-labelledby="rsvp-title">
+      <div class="section-inner">
+        <h2 id="rsvp-title">RSVP</h2>
+        <p class="lead">We can’t wait to celebrate with you! Kindly RSVP via the Typeform link below.</p>
+        <p><a class="focus-ring" href="{{ wedding.site.rsvp_typeform_url }}" target="_blank" rel="noopener">Open RSVP form</a></p>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if wedding.sections.schedule.enabled %}
+    <section id="schedule" aria-labelledby="schedule-title">
+      <div class="section-inner">
+        <h2 id="schedule-title">Schedule</h2>
+        <p class="lead">{{ wedding.sections.schedule.note }}</p>
+        <ol class="schedule-list">
+          {% for item in wedding.sections.schedule.items %}
+          <li class="schedule-item">
+            <time datetime="{{ item.time_rfc3339 }}">{{ item.time_rfc3339 | date("EEE, MMM d • h:mm a", wedding.site.timezone) }}</time>
+            <div class="label">{{ item.label }}</div>
+            <div class="location">{{ item.location }}</div>
+            <p>{{ item.details }}</p>
+          </li>
+          {% endfor %}
+        </ol>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if wedding.sections.travel.enabled %}
+    <section id="travel" aria-labelledby="travel-title">
+      <div class="section-inner">
+        <h2 id="travel-title">Travel</h2>
+        <p class="lead">{{ wedding.sections.travel.intro }}</p>
+        <div class="info-grid two-col">
+          <div>
+            <h3>Airports</h3>
+            <ul class="cards-grid" aria-label="Airports">
+              {% for airport in wedding.sections.travel.airports %}
+              <li class="card">
+                <h3>{{ airport.code }} &mdash; {{ airport.name }}</h3>
+                <p>{{ airport.note }}</p>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div>
+            <h3>Tips</h3>
+            <ul>
+              {% for tip in wedding.sections.travel.tips %}
+              <li>{{ tip }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if wedding.sections.lodging.enabled %}
+    <section id="lodging" aria-labelledby="lodging-title">
+      <div class="section-inner">
+        <h2 id="lodging-title">Lodging</h2>
+        <p class="lead">{{ wedding.sections.lodging.intro }}</p>
+        <div class="filters" data-filter-group aria-label="Lodging filters">
+          {% if wedding.sections.lodging.filters.price %}
+          <button type="button" class="filter-chip" data-filter="price" aria-pressed="false">
+            <span aria-hidden="true">💰</span> Budget-friendly
+          </button>
+          {% endif %}
+          {% if wedding.sections.lodging.filters.pet_friendly %}
+          <button type="button" class="filter-chip" data-filter="pet_friendly" aria-pressed="false">
+            <span aria-hidden="true">🐾</span> Pet friendly
+          </button>
+          {% endif %}
+          {% if wedding.sections.lodging.filters.family_friendly %}
+          <button type="button" class="filter-chip" data-filter="family_friendly" aria-pressed="false">
+            <span aria-hidden="true">🧸</span> Family friendly
+          </button>
+          {% endif %}
+          {% if wedding.sections.lodging.filters.distance %}
+          <button type="button" class="filter-chip" data-filter="distance" aria-pressed="false">
+            <span aria-hidden="true">🛣️</span> &lt; 15 min drive
+          </button>
+          {% endif %}
+        </div>
+        <div class="lodging-grid" data-lodging-list>
+          {% for place in wedding.sections.lodging.places %}
+          <article class="lodging-card" data-place
+            data-price="{{ place.price_range }}"
+            data-pet="{{ place.pet_friendly }}"
+            data-family="{{ place.family_friendly }}"
+            data-distance="{{ place.distance_minutes }}"
+            data-lat="{{ place.lat }}"
+            data-lng="{{ place.lng }}">
+            <header>
+              <div>
+                <h3>{{ place.name }}</h3>
+                <p>{{ place.type }}{% if place.distance_minutes %} · {{ place.distance_minutes }} min drive{% endif %}</p>
+              </div>
+              <span class="status {{ place.status }}">{{ place.status | replace('_', ' ') }}</span>
+            </header>
+            <div class="details">
+              <p>Price range: {{ place.price_range }}</p>
+              <p>Minimum stay: {{ place.min_nights }} night{% if place.min_nights != 1 %}s{% endif %}</p>
+              <ul class="badge-list" aria-label="Amenities">
+                <li class="badge">{{ 'Family friendly' if place.family_friendly else 'Adults vibe' }}</li>
+                <li class="badge">{{ 'Pets welcome' if place.pet_friendly else 'No pets' }}</li>
+              </ul>
+            </div>
+            {% if place.url %}<p><a href="{{ place.url }}" target="_blank" rel="noopener">Website</a></p>{% endif %}
+          </article>
+          {% endfor %}
+        </div>
+        <div id="map" data-enabled="{{ 'true' if wedding.site.map_enabled and hasMapCoords else 'false' }}" data-map
+          data-venue-lat="{{ wedding.site.venue.lat }}" data-venue-lng="{{ wedding.site.venue.lng }}"
+          data-venue-name="{{ wedding.site.venue.name }}"></div>
+        <p class="map-note">Map powered by OpenStreetMap when enabled.</p>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if wedding.sections.activities.enabled %}
+    <section id="activities" aria-labelledby="activities-title">
+      <div class="section-inner">
+        <h2 id="activities-title">Activities</h2>
+        <p class="lead">{{ wedding.sections.activities.intro }}</p>
+        <div class="cards-grid">
+          {% for spot in wedding.sections.activities.spots %}
+          <article class="card">
+            <h3>{{ spot.name }}</h3>
+            <p>{{ spot.blurb }}</p>
+            {% if spot.url %}<p><a href="{{ spot.url }}" target="_blank" rel="noopener">Learn more</a></p>{% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if wedding.sections.hikes.enabled %}
+    <section id="hikes" aria-labelledby="hikes-title">
+      <div class="section-inner">
+        <h2 id="hikes-title">Hikes</h2>
+        <p class="lead">{{ wedding.sections.hikes.intro }}</p>
+        <div class="cards-grid">
+          {% for hike in wedding.sections.hikes.list %}
+          <article class="card">
+            <h3>{{ hike.name }}</h3>
+            <p>{{ hike.blurb }}</p>
+            {% if hike.url %}<p><a href="{{ hike.url }}" target="_blank" rel="noopener">Plan it</a></p>{% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if wedding.sections.mtb.enabled %}
+    <section id="mtb" aria-labelledby="mtb-title">
+      <div class="section-inner">
+        <h2 id="mtb-title">MTB</h2>
+        <p class="lead">{{ wedding.sections.mtb.intro }}</p>
+        <div class="cards-grid">
+          {% for trail in wedding.sections.mtb.trails %}
+          <article class="card">
+            <h3>{{ trail.name }}</h3>
+            <p>{{ trail.difficulty }}</p>
+            {% if trail.url %}<p><a href="{{ trail.url }}" target="_blank" rel="noopener">Trail info</a></p>{% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if wedding.sections.faq.enabled %}
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="section-inner">
+        <h2 id="faq-title">FAQ</h2>
+        <dl class="faq">
+          {% for item in wedding.sections.faq.items %}
+          <dt>{{ item.q }}</dt>
+          <dd>{{ item.a }}</dd>
+          {% endfor %}
+        </dl>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if wedding.sections.registry.enabled %}
+    <section id="registry" aria-labelledby="registry-title">
+      <div class="section-inner">
+        <h2 id="registry-title">{{ wedding.sections.registry.title }}</h2>
+        <p class="lead">{{ wedding.sections.registry.intro }}</p>
+        <ul class="registry-list">
+          {% for item in wedding.sections.registry.items %}
+          <li>
+            <span aria-hidden="true">🎁</span>
+            {% if item.url %}
+            <a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.label }}</a>
+            {% else %}
+            <span>{{ item.label }}</span>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+    {% endif %}
+  </main>
+  <footer>
+    <div class="footer-inner">
+      <p>{{ wedding.site.venue.name }} · {{ wedding.site.venue.address }}</p>
+      <p>Built with love, snow, and goofs. Site last generated {{ site.build.timestamp }}.</p>
+      <p>
+        <small>Credits: Vermont air, our community, and open-source friends.</small>
+      </p>
+    </div>
+  </footer>
+</div>
