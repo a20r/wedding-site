@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ wedding.site.title }} | {{ wedding.site.town }}, {{ wedding.site.state }}</title>
+    <meta name="description" content="{{ wedding.site.hero_tagline }}" />
+    <meta name="theme-color" content="{{ wedding.theme.palette.bg }}" />
+    <link rel="icon" href="{{ site.BASE_URL }}/assets/favicon.svg" type="image/svg+xml" />
+    {% if wedding.theme.fonts.use_webfonts %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family={{ wedding.theme.fonts.heading | replace(' ', '+') }}:wght@400;600&family={{ wedding.theme.fonts.body | replace(' ', '+') }}:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    {% endif %}
+    <style>
+      :root {
+        --bg: {{ wedding.theme.palette.bg }};
+        --ink: {{ wedding.theme.palette.ink }};
+        --accent: {{ wedding.theme.palette.accent }};
+        --accent2: {{ wedding.theme.palette.accent2 }};
+        --sky: {{ wedding.theme.palette.sky }};
+        --cream: {{ wedding.theme.palette.cream }};
+        --font-heading: {{ wedding.theme.fonts.heading }};
+        --font-body: {{ wedding.theme.fonts.body }};
+      }
+    </style>
+    <style>{{ criticalCss | safe }}</style>
+    <link rel="stylesheet" href="{{ site.BASE_URL }}/styles/main.css" />
+  </head>
+  <body data-konami="{{ wedding.easter_eggs.konami_enabled }}">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    {{ content | safe }}
+    <script type="module" src="{{ site.BASE_URL }}/assets/index.js" defer></script>
+    {% if wedding.site.analytics.enabled %}
+      {% if wedding.site.analytics.provider == 'plausible' %}
+      <script defer data-domain="{{ wedding.site.analytics.id }}" src="https://plausible.io/js/script.js"></script>
+      {% elif wedding.site.analytics.provider == 'gtag' %}
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ wedding.site.analytics.id }}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+        gtag('config', '{{ wedding.site.analytics.id }}');
+      </script>
+      {% endif %}
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,148 @@
+site:
+  title: "Alex & Lily"
+  couple:
+    alex_blurb: "Snowboarder."
+    lily_blurb: "Skier."
+  date_iso: "2026-07-11"
+  timezone: "America/New_York"
+  venue:
+    name: "Lareau Farm"
+    address: "48 Lareau Rd, Waitsfield, VT"
+    lat: null
+    lng: null
+  town: "Waitsfield"
+  state: "Vermont"
+  rsvp_typeform_url: "https://typeform.example/xyz"
+  hero_tagline: "Modern yet goofy. Vermont summer."
+  show_countdown: true
+  map_enabled: false
+  analytics:
+    enabled: false
+    provider: ""
+    id: ""
+sections:
+  rsvp:
+    enabled: true
+  schedule:
+    enabled: true
+    note: "Times are placeholders and subject to change."
+    items:
+      - time_rfc3339: "2026-07-10T18:00:00-04:00"
+        label: "Welcome drinks"
+        location: "TBD"
+        details: "Casual."
+      - time_rfc3339: "2026-07-11T15:00:00-04:00"
+        label: "Ceremony"
+        location: "Lareau Farm"
+        details: "Outdoor lawn."
+      - time_rfc3339: "2026-07-11T17:00:00-04:00"
+        label: "Reception"
+        location: "Lareau Farm"
+        details: "Dinner and dancing."
+  travel:
+    enabled: true
+    intro: "Most guests fly into BTV. Car rentals recommended."
+    airports:
+      - code: "BTV"
+        name: "Burlington International Airport"
+        note: "≈45–60 min to Waitsfield."
+    tips:
+      - "Rideshares are limited in the valley."
+      - "Plan for summer weekend traffic."
+  lodging:
+    enabled: true
+    intro: "Rooms are limited. Book early."
+    filters:
+      price: true
+      pet_friendly: true
+      family_friendly: true
+      distance: true
+    places:
+      - name: "Placehold Inn"
+        type: "Inn"
+        url: "https://example.com"
+        distance_minutes: 8
+        price_range: "$$"
+        status: "on_hold"
+        min_nights: 2
+        family_friendly: true
+        pet_friendly: false
+        lat: null
+        lng: null
+  activities:
+    enabled: true
+    intro: "Light Vermont summer ideas."
+    spots:
+      - name: "Sugarbush Resort — Summer"
+        blurb: "Scenic lift rides, disc golf, hiking."
+        url: "https://www.sugarbush.com"
+      - name: "Warren Falls"
+        blurb: "Iconic swimming holes."
+        url: ""
+      - name: "The Warren Store"
+        blurb: "Sandwiches, local goods."
+        url: "https://www.warrenstore.com"
+      - name: "Waitsfield Farmers Market (Sat AM)"
+        blurb: "Local vendors and produce."
+        url: "https://www.waitsfieldfarmersmarket.com"
+      - name: "Lareau swimming hole"
+        blurb: "Easy river access near the venue."
+        url: ""
+      - name: "Mehuron’s Market"
+        blurb: "Beloved local grocery."
+        url: "https://www.mehurons.com"
+      - name: "Lawson’s Finest Liquids"
+        blurb: "Brewery taproom."
+        url: "https://www.lawsonsfinest.com"
+  hikes:
+    enabled: true
+    intro: "Short hikes and scenic rides."
+    list:
+      - name: "Sunset Ledge"
+        blurb: "Short hike. Big views."
+        url: ""
+      - name: "Mad River Glen Single Chair (summer)"
+        blurb: "Scenic chairlift for views."
+        url: "https://www.madriverglen.com"
+  mtb:
+    enabled: true
+    intro: "Local MTB options."
+    trails:
+      - name: "Mad River Riders network (Trailforks)"
+        difficulty: "Green–Black"
+        url: "https://www.trailforks.com"
+      - name: "Blueberry Lake loops"
+        difficulty: "Green–Blue"
+        url: ""
+  faq:
+    enabled: true
+    items:
+      - q: "Dress code?"
+        a: "Outdoor summer semi-formal. Practical shoes encouraged."
+      - q: "Kids welcome?"
+        a: "Yes."
+      - q: "Parking?"
+        a: "On-site."
+  registry:
+    enabled: true
+    title: "Not-So-Registry"
+    intro: "Your presence is the gift. If you insist, consider experiences or charities."
+    items:
+      - label: "Honeymoon fund"
+        url: ""
+      - label: "Local charity"
+        url: ""
+theme:
+  palette:
+    bg: "#FAF8F4"
+    ink: "#1F1E1B"
+    accent: "#2F6C4F"
+    accent2: "#C97D3D"
+    sky: "#CBE3F4"
+    cream: "#F7EAD0"
+  fonts:
+    use_webfonts: false
+    heading: "system-ui"
+    body: "system-ui"
+easter_eggs:
+  konami_enabled: true

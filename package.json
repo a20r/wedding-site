@@ -1,0 +1,26 @@
+{
+  "name": "wedding-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "bundle": "node scripts/bundle.mjs",
+    "build:eleventy": "eleventy",
+    "build": "npm run clean && npm run bundle && npm run build:eleventy",
+    "typecheck": "tsc --noEmit",
+    "dev": "BASE_URL='' npm run bundle -- --watch & eleventy --serve --quiet",
+    "deploy": "npx gh-pages -d dist"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "yaml": "^2.3.4",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "esbuild": "^0.19.12",
+    "gh-pages": "^6.0.0",
+    "typescript": "^5.3.3"
+  }
+}
