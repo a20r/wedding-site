@@ -97,7 +97,7 @@ header.site-header {
   display: grid;
   place-items: center;
   padding: 6rem 1.75rem 4rem;
-  background: linear-gradient(135deg, rgba(155, 107, 56, 0.12), rgba(107, 127, 99, 0.16)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+  background: linear-gradient(135deg, rgba(155, 107, 56, 0.12), rgba(107, 127, 99, 0.16)), url('/images/hero-watercolor.png') center/cover fixed;
   color: var(--cream);
   text-align: center;
   position: relative;
