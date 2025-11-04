@@ -137,3 +137,8 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Hugo build artifacts
+public/
+resources/
+.hugo_build.lock
