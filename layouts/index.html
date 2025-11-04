@@ -1,0 +1,141 @@
+{{ define "main" }}
+<section id="home" class="hero section">
+  <div class="container">
+    <p class="hero__intro">We're getting married!</p>
+    <h1 class="hero__title">{{ .Site.Params.coupleNames }}</h1>
+    <p class="hero__details">{{ .Site.Params.weddingDate }} &middot; {{ .Site.Params.venueName }} &mdash; {{ .Site.Params.venueLocation }}</p>
+    <a href="#rsvp" class="btn">Save the Date</a>
+  </div>
+</section>
+
+<section id="our-story" class="section section--alt">
+  <div class="container grid grid--two">
+    <div>
+      <h2>Our Story</h2>
+      <p>From chance encounters on a frosty Vermont lift line to late-night campfire plans, our story has always been rooted in the mountains. We fell in love exploring winding singletrack, trading homemade maple lattes, and sharing the quiet rhythm of small town life. On July 11, 2026 we get to bring everyone we love to the heart of it all: Lareau Farm in Waitsfield.</p>
+      <p>We're so grateful that you're making the trip to celebrate with us among green hills, big skies, and the scent of spruce after a summer rain.</p>
+    </div>
+    <div class="card">
+      <h3>Weekend Highlights</h3>
+      <ul class="list">
+        <li>Friday welcome bonfire at Lawson's Finest</li>
+        <li>Saturday ceremony beneath the maples</li>
+        <li>Family-style dinner at American Flatbread</li>
+        <li>Sunday river dip and farmer's market stroll</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="schedule" class="section">
+  <div class="container">
+    <h2>Schedule</h2>
+    <div class="timeline">
+      <div class="timeline__item">
+        <span class="timeline__time">Friday, July 10</span>
+        <h3>Welcome Drinks</h3>
+        <p>Drop by Lawson's Finest Liquids from 6&ndash;9 PM for a casual meet-up. Grab a sip, say hi, and settle into the valley.</p>
+      </div>
+      <div class="timeline__item">
+        <span class="timeline__time">Saturday, July 11</span>
+        <h3>Ceremony &amp; Celebration</h3>
+        <p>Arrive at Lareau Farm by 4 PM to wander the grounds. Ceremony begins at 4:30 PM with dinner, dancing, and late-night wood-fired pizza to follow.</p>
+      </div>
+      <div class="timeline__item">
+        <span class="timeline__time">Sunday, July 12</span>
+        <h3>Farewell River Dip</h3>
+        <p>Meet us at the Waitsfield covered bridge at 10 AM for coffee, croissants, and a refreshing Mad River swim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="venue" class="section section--alt">
+  <div class="container grid grid--two">
+    <div>
+      <h2>Venue</h2>
+      <p>Lareau Farm is home to American Flatbread and the warmest kind of Vermont hospitality. Expect wide meadows, views of the Green Mountains, and a cozy barn lit by twinkle lights.</p>
+      <p>Parking is available on-site. Shuttles will run from Waitsfield village lodging starting at 3:30 PM.</p>
+    </div>
+    <div class="card">
+      <h3>Address</h3>
+      <p>46 Lareau Road<br />Waitsfield, VT 05673</p>
+      <a class="btn btn--ghost" href="https://maps.app.goo.gl/LmEtJPXZ2y1gXcTc7" target="_blank" rel="noopener">Open in Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<section id="travel" class="section">
+  <div class="container grid grid--two">
+    <div>
+      <h2>Travel &amp; Stay</h2>
+      <p>Waitsfield sits in the Mad River Valley, just 45 minutes from Burlington International Airport (BTV). Rental cars are available at the airport, and ride shares operate sporadically&mdash;we recommend booking transportation in advance.</p>
+      <p>For lodging, explore the charming inns and lodges nearby. We've reserved room blocks at:</p>
+      <ul class="list">
+        <li><strong>Pitcher Inn</strong> &mdash; elegant rooms in Warren village</li>
+        <li><strong>Lareau Farm Inn</strong> &mdash; stay right on the property</li>
+        <li><strong>1824 House Inn</strong> &mdash; riverside rooms with breakfast</li>
+      </ul>
+      <p>There are also plenty of cozy Airbnbs tucked along the valley roads. Summer is a popular season, so book early.</p>
+    </div>
+    <div class="card card--photo">
+      <h3>Things to Do</h3>
+      <p>Make it a long weekend with hikes on the Long Trail, floats in the Mad River, and scoops from Canteen Creemee Company.</p>
+    </div>
+  </div>
+</section>
+
+<section id="registry" class="section section--alt">
+  <div class="container">
+    <h2>Registry</h2>
+    <p>Your presence is the best gift. If you'd like to contribute to our next adventures, we've set up a honeymoon fund and a few thoughtful registries.</p>
+    <div class="grid grid--three">
+      <a class="card card--link" href="https://www.zola.com" target="_blank" rel="noopener">
+        <h3>Zola</h3>
+        <p>Our curated picks for home, trail, and travel.</p>
+      </a>
+      <a class="card card--link" href="https://www.rei.com/" target="_blank" rel="noopener">
+        <h3>REI Registry</h3>
+        <p>Gear for bikepacking, ski tours, and all-season fun.</p>
+      </a>
+      <a class="card card--link" href="https://www.honeyfund.com" target="_blank" rel="noopener">
+        <h3>Honeyfund</h3>
+        <p>Help us plan a post-wedding adventure in the Dolomites.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="mtb" class="section">
+  <div class="container grid grid--two">
+    <div>
+      <h2>MTB in the Mad River Valley</h2>
+      <p>We couldn't resist a little singletrack love note. If you're packing your bike, here's where to roll.</p>
+      <ul class="list">
+        <li><strong>Blueberry Lake Trails</strong> &mdash; flowy loops perfect for a warm-up lap.</li>
+        <li><strong>Eurich Pond Network</strong> &mdash; classic Vermont tech with mossy rock gardens.</li>
+        <li><strong>Sunny Z</strong> &amp; <strong>Evolution</strong> at Sugarbush &mdash; lift-served thrills with Green Mountain views.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Trail Tips</h3>
+      <p>Trails are maintained by the Mad River Riders. Consider a day pass or donation if you ride. Expect slick roots if it rained the night before and keep an eye out for maple creemees as your post-ride reward.</p>
+      <a class="btn btn--ghost" href="https://madriverriders.com/trails/" target="_blank" rel="noopener">Trail Conditions</a>
+    </div>
+  </div>
+</section>
+
+<section id="rsvp" class="section section--alt">
+  <div class="container">
+    <h2>RSVP</h2>
+    <p>Formal invitations and RSVP details will be sent closer to the big day. For now, mark your calendars and make those travel plans!</p>
+    <a class="btn" href="mailto:hello@annaandjamie.love?subject=RSVP%20-%20Anna%20%26%20Jamie">Email Us</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; {{ now.Format "2006" }} {{ .Site.Params.coupleNames }} &mdash; With love from Vermont.</p>
+  </div>
+</footer>
+{{ end }}

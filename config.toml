@@ -1,0 +1,9 @@
+baseURL = "https://<your-github-username>.github.io/wedding-site/"
+languageCode = "en-us"
+title = "Anna & Jamie's Lareau Farm Wedding"
+theme = ""
+[params]
+  coupleNames = "Anna & Jamie"
+  weddingDate = "July 11, 2026"
+  venueName = "Lareau Farm"
+  venueLocation = "Waitsfield, Vermont"
